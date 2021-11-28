@@ -1,10 +1,10 @@
 package org.bambrikii.expression.tiny.parser.ops;
 
-import org.bambrikii.expression.tiny.algo.MinusOperator;
+import org.bambrikii.expression.tiny.algo.minus.MinusOperator;
 import org.bambrikii.expression.tiny.algo.Operator;
 import org.bambrikii.expression.tiny.parser.ExpressionParserContext;
 
-public class MinusOperatorParser extends BaseOperatorParser {
+public class MinusOperatorParser extends CharBasedOperatorParser {
     public MinusOperatorParser(char ch, int priority) {
         super(ch, priority);
     }

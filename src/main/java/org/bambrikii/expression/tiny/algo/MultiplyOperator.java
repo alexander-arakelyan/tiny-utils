@@ -1,7 +1,4 @@
-package org.bambrikii.expression.tiny.algo.minus;
-
-import org.bambrikii.expression.tiny.algo.ExpressionAlgoContext;
-import org.bambrikii.expression.tiny.algo.Operator;
+package org.bambrikii.expression.tiny.algo;
 
 public class MultiplyOperator implements Operator {
     private Operator arg1;

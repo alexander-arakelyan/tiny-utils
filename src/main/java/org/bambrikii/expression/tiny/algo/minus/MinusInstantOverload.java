@@ -1,4 +1,4 @@
-package org.bambrikii.expression.tiny.algo.plus;
+package org.bambrikii.expression.tiny.algo.minus;
 
 import org.bambrikii.expression.tiny.algo.OperatorOverload;
 import org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodElement;
@@ -7,7 +7,7 @@ import java.time.Instant;
 import java.time.Period;
 import java.util.List;
 
-public class PlusInstantOverload implements OperatorOverload {
+public class MinusInstantOverload implements OperatorOverload {
     @Override
     public boolean canAccept(Object... args) {
         return args[0] instanceof Instant;
@@ -26,15 +26,15 @@ public class PlusInstantOverload implements OperatorOverload {
     private Instant evalInstant(Instant date, TimePeriodElement period, int num) {
         switch (period.getType()) {
             case YEAR:
-                return date.plus(Period.ofYears(num));
+                return date.minus(Period.ofYears(num));
             case MONTH:
-                return date.plus(Period.ofMonths(num));
+                return date.minus(Period.ofMonths(num));
             case WEEK:
-                return date.plus(Period.ofWeeks(num));
+                return date.minus(Period.ofWeeks(num));
             case DAY:
-                return date.plus(Period.ofDays(num));
+                return date.minus(Period.ofDays(num));
             case SEC:
-                return date.plusSeconds(num);
+                return date.minusSeconds(num);
             default:
                 throw new UnsupportedOperationException("Not implemented");
         }

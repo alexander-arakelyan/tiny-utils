@@ -4,7 +4,7 @@ import org.bambrikii.expression.tiny.algo.Operator;
 import org.bambrikii.expression.tiny.algo.plus.PlusOperator;
 import org.bambrikii.expression.tiny.parser.ExpressionParserContext;
 
-public class PlusOperatorParser extends BaseOperatorParser {
+public class PlusOperatorParser extends CharBasedOperatorParser {
     public PlusOperatorParser(char ch, int priority) {
         super(ch, priority);
     }

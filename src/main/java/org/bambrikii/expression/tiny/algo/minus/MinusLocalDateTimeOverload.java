@@ -1,4 +1,4 @@
-package org.bambrikii.expression.tiny.algo.plus;
+package org.bambrikii.expression.tiny.algo.minus;
 
 import org.bambrikii.expression.tiny.algo.OperatorOverload;
 import org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodElement;
@@ -6,7 +6,7 @@ import org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodElement;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class PlusLocalDateTimeOverload implements OperatorOverload {
+public class MinusLocalDateTimeOverload implements OperatorOverload {
     @Override
     public boolean canAccept(Object... args) {
         return args[0] instanceof LocalDateTime;
@@ -25,19 +25,19 @@ public class PlusLocalDateTimeOverload implements OperatorOverload {
         int num = period.getNum();
         switch (period.getType()) {
             case YEAR:
-                return date.plusYears(num);
+                return date.minusYears(num);
             case MONTH:
-                return date.plusMonths(num);
+                return date.minusMonths(num);
             case WEEK:
-                return date.plusWeeks(num);
+                return date.minusWeeks(num);
             case DAY:
-                return date.plusDays(num);
+                return date.minusDays(num);
             case HOUR:
-                return date.plusHours(num);
+                return date.minusHours(num);
             case MIN:
-                return date.plusMinutes(num);
+                return date.minusMinutes(num);
             case SEC:
-                return date.plusSeconds(num);
+                return date.minusSeconds(num);
             default:
                 throw new UnsupportedOperationException("Not implemented");
         }

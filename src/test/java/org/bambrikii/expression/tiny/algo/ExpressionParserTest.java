@@ -21,7 +21,9 @@ public class ExpressionParserTest {
                         new Object[]{"1 + 2 * ( 2 - 3) / 4", 0.5d},
                         new Object[]{"(1+2+3)*4", 24.0d},
                         new Object[]{"10/(1+2*3)*4", 5.714285714285714d},
-                        new Object[]{"2021-11-28T14:50:45 + 1 day", LocalDateTime.of(2021, 11, 29, 14, 50, 45)}
+                        new Object[]{"2021-11-28T14:50:45 + 1 day", LocalDateTime.of(2021, 11, 29, 14, 50, 45)},
+                        new Object[]{"2021-11-28T14:50:45 - 1 day", LocalDateTime.of(2021, 11, 27, 14, 50, 45)},
+                        new Object[]{"2021-11-28T14:50:45 unixtime", 1638129045l}
                 }
         );
     }

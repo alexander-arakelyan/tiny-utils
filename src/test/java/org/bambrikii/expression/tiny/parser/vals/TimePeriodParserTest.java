@@ -10,11 +10,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PeriodParserTest {
+public class TimePeriodParserTest {
     @Test
     public void shouldParsePeriod() {
         ExpressionParserContext ctx = new ExpressionParserContext("1 day 3 months");
-        boolean result = new PeriodParser().parse(ctx);
+        boolean result = new TimePeriodParser().parse(ctx);
 
         assertThat(result).isTrue();
 

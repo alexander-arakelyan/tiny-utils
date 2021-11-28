@@ -1,8 +1,8 @@
 package org.bambrikii.expression.tiny.parser.vals;
 
 import org.bambrikii.expression.tiny.algo.ConstantValue;
-import org.bambrikii.expression.tiny.algo.PeriodElement;
-import org.bambrikii.expression.tiny.algo.PeriodType;
+import org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodElement;
+import org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType;
 import org.bambrikii.expression.tiny.parser.ExpressionParserContext;
 import org.bambrikii.expression.tiny.parser.ValueParser;
 import org.bambrikii.expression.tiny.parser.utils.NumericParserUtils;
@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.bambrikii.expression.tiny.algo.PeriodType.DAY;
-import static org.bambrikii.expression.tiny.algo.PeriodType.HOUR;
-import static org.bambrikii.expression.tiny.algo.PeriodType.MIN;
-import static org.bambrikii.expression.tiny.algo.PeriodType.MONTH;
-import static org.bambrikii.expression.tiny.algo.PeriodType.SEC;
-import static org.bambrikii.expression.tiny.algo.PeriodType.WEEK;
-import static org.bambrikii.expression.tiny.algo.PeriodType.YEAR;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.DAY;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.HOUR;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.MIN;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.MONTH;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.SEC;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.WEEK;
+import static org.bambrikii.expression.tiny.algo.timeperiod.TimePeriodType.YEAR;
 
-public class PeriodParser implements ValueParser {
-    private static final Map<PeriodType, List<PeriodMatcher>> MATCHERS;
+public class TimePeriodParser implements ValueParser {
+    private static final Map<TimePeriodType, List<PeriodMatcher>> MATCHERS;
     public static final int DOES_NOT_MATCH_POS = -1;
 
     static {
@@ -53,7 +53,7 @@ public class PeriodParser implements ValueParser {
     public boolean parse(ExpressionParserContext ctx) {
         int pos0 = ctx.getPos();
         int pos = pos0;
-        List<PeriodElement> result = null;
+        List<TimePeriodElement> result = null;
         periods:
         while (true) {
             // parse number
@@ -78,9 +78,9 @@ public class PeriodParser implements ValueParser {
             }
 
             // parse type
-            PeriodType type = null;
+            TimePeriodType type = null;
             type:
-            for (Map.Entry<PeriodType, List<PeriodMatcher>> entry : MATCHERS.entrySet()) {
+            for (Map.Entry<TimePeriodType, List<PeriodMatcher>> entry : MATCHERS.entrySet()) {
                 for (PeriodMatcher matcher : entry.getValue()) {
                     int pos2 = matchesType(ctx, matcher, pos);
                     if (pos2 > pos) {
@@ -94,7 +94,7 @@ public class PeriodParser implements ValueParser {
                 if (result == null) {
                     result = new ArrayList<>();
                 }
-                result.add(new PeriodElement(num, type));
+                result.add(new TimePeriodElement(num, type));
             }
 
             // exhaust spaces

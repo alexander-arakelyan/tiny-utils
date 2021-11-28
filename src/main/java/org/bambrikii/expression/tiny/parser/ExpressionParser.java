@@ -7,11 +7,12 @@ import org.bambrikii.expression.tiny.parser.ops.MinusOperatorParser;
 import org.bambrikii.expression.tiny.parser.ops.MultiplyOperatorParser;
 import org.bambrikii.expression.tiny.parser.ops.OpenOperatorParser;
 import org.bambrikii.expression.tiny.parser.ops.PlusOperatorParser;
+import org.bambrikii.expression.tiny.parser.ops.ToUnixTimeOperatorParser;
 import org.bambrikii.expression.tiny.parser.vals.LocalDateTimeParser;
 import org.bambrikii.expression.tiny.parser.vals.NumericParser;
-import org.bambrikii.expression.tiny.parser.vals.PeriodParser;
 import org.bambrikii.expression.tiny.parser.vals.SpaceParser;
 import org.bambrikii.expression.tiny.parser.vals.StringParser;
+import org.bambrikii.expression.tiny.parser.vals.TimePeriodParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class ExpressionParser {
         return new ExpressionParser()
                 .handler(new SpaceParser())
                 .handler(new LocalDateTimeParser())
-                .handler(new PeriodParser())
+                .handler(new TimePeriodParser())
                 // operations
                 .handler(new OpenOperatorParser('(', ops++))
                 .handler(new CloseOperatorParser(')', ops++))
@@ -42,6 +43,7 @@ public class ExpressionParser {
                 .handler(new MultiplyOperatorParser('*', ops++))
                 .handler(new MinusOperatorParser('-', ops++))
                 .handler(new PlusOperatorParser('+', ops++))
+                .handler(new ToUnixTimeOperatorParser("unixtime", ops++))
                 // values
                 .handler(new NumericParser())
                 .handler(new StringParser());

@@ -4,7 +4,7 @@ import org.bambrikii.expression.tiny.algo.DivideOperator;
 import org.bambrikii.expression.tiny.algo.Operator;
 import org.bambrikii.expression.tiny.parser.ExpressionParserContext;
 
-public class DivideOperatorParser extends BaseOperatorParser {
+public class DivideOperatorParser extends CharBasedOperatorParser {
     public DivideOperatorParser(char ch, int priority) {
         super(ch, priority);
     }
