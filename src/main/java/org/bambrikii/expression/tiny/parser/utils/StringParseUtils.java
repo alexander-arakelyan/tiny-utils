@@ -36,4 +36,13 @@ public class StringParseUtils {
     public static boolean isAlphaNumeric(char ch) {
         return isAlpha(ch) || isNumeric(ch);
     }
+
+    public static boolean isSpecialChars(char ch) {
+        for (char ch2 : SPECIAL_CHARS) {
+            if (ch2 == ch) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

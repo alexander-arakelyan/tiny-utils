@@ -9,6 +9,7 @@ import org.bambrikii.expression.tiny.parser.ops.OpenOperatorParser;
 import org.bambrikii.expression.tiny.parser.ops.PlusOperatorParser;
 import org.bambrikii.expression.tiny.parser.ops.ToUnixTimeOperatorParser;
 import org.bambrikii.expression.tiny.parser.vals.LocalDateTimeParser;
+import org.bambrikii.expression.tiny.parser.vals.LookupParser;
 import org.bambrikii.expression.tiny.parser.vals.NumericParser;
 import org.bambrikii.expression.tiny.parser.vals.SpaceParser;
 import org.bambrikii.expression.tiny.parser.vals.StringParser;
@@ -46,6 +47,7 @@ public class ExpressionParser {
                 .handler(new ToUnixTimeOperatorParser("unixtime", ops++))
                 // values
                 .handler(new NumericParser())
+                .handler(new LookupParser())
                 .handler(new StringParser());
     }
 
