@@ -1,6 +1,6 @@
 package org.bambrikii.expression.tiny.algo;
 
-public class ConstantValue implements Operation {
+public class ConstantValue implements Operator {
     private Object value;
 
     public ConstantValue(Object value) {

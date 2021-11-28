@@ -1,15 +1,15 @@
 package org.bambrikii.expression.tiny.parser;
 
-import org.bambrikii.expression.tiny.algo.Operation;
+import org.bambrikii.expression.tiny.algo.Operator;
 
 import java.util.LinkedList;
 
 public class ExpressionParserContext {
     private final String expr;
     private int pos = 0;
-    private final LinkedList<Operation> vals = new LinkedList<>();
-    private final LinkedList<Operation> ops = new LinkedList<>();
-    private final LinkedList<OperationParser> parserOps = new LinkedList<>();
+    private final LinkedList<Operator> vals = new LinkedList<>();
+    private final LinkedList<Operator> ops = new LinkedList<>();
+    private final LinkedList<OperatorParser> parserOps = new LinkedList<>();
 
     public ExpressionParserContext(String expr) {
         this.expr = expr;
@@ -35,23 +35,23 @@ public class ExpressionParserContext {
         return pos >= expr.length();
     }
 
-    public void pushVal(Operation val) {
+    public void pushVal(Operator val) {
         vals.push(val);
     }
 
-    public void pushOp(Operation operation) {
-        this.ops.push(operation);
+    public void pushOp(Operator operator) {
+        this.ops.push(operator);
     }
 
-    public LinkedList<Operation> getVals() {
+    public LinkedList<Operator> getVals() {
         return vals;
     }
 
-    public LinkedList<Operation> getOps() {
+    public LinkedList<Operator> getOps() {
         return ops;
     }
 
-    public Operation popVal() {
+    public Operator popVal() {
         return vals.pop();
     }
 
@@ -59,15 +59,15 @@ public class ExpressionParserContext {
         return !parserOps.isEmpty();
     }
 
-    public OperationParser lastParserOp() {
+    public OperatorParser lastParserOp() {
         return parserOps.peek();
     }
 
-    public OperationParser popParserOp() {
+    public OperatorParser popParserOp() {
         return parserOps.pop();
     }
 
-    public void pushParserOp(OperationParser parser) {
+    public void pushParserOp(OperatorParser parser) {
         parserOps.push(parser);
     }
 }

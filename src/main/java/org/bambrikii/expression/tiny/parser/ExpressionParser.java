@@ -1,14 +1,15 @@
 package org.bambrikii.expression.tiny.parser;
 
 import org.bambrikii.expression.tiny.algo.ExpressionAlgo;
-import org.bambrikii.expression.tiny.parser.ops.CloseOperationParser;
-import org.bambrikii.expression.tiny.parser.ops.DivideOperationParser;
-import org.bambrikii.expression.tiny.parser.ops.MinusOperationParser;
-import org.bambrikii.expression.tiny.parser.ops.MultiplyOperationParser;
-import org.bambrikii.expression.tiny.parser.ops.OpenOperationParser;
-import org.bambrikii.expression.tiny.parser.ops.PlusOperationParser;
-import org.bambrikii.expression.tiny.parser.vals.InstantParser;
+import org.bambrikii.expression.tiny.parser.ops.CloseOperatorParser;
+import org.bambrikii.expression.tiny.parser.ops.DivideOperatorParser;
+import org.bambrikii.expression.tiny.parser.ops.MinusOperatorParser;
+import org.bambrikii.expression.tiny.parser.ops.MultiplyOperatorParser;
+import org.bambrikii.expression.tiny.parser.ops.OpenOperatorParser;
+import org.bambrikii.expression.tiny.parser.ops.PlusOperatorParser;
+import org.bambrikii.expression.tiny.parser.vals.LocalDateTimeParser;
 import org.bambrikii.expression.tiny.parser.vals.NumericParser;
+import org.bambrikii.expression.tiny.parser.vals.PeriodParser;
 import org.bambrikii.expression.tiny.parser.vals.SpaceParser;
 import org.bambrikii.expression.tiny.parser.vals.StringParser;
 
@@ -23,7 +24,7 @@ public class ExpressionParser {
         return this;
     }
 
-    private ExpressionParser handler(OperationParser parser) {
+    private ExpressionParser handler(OperatorParser parser) {
         this.parsers.add(parser);
         return this;
     }
@@ -32,15 +33,16 @@ public class ExpressionParser {
         int ops = 0;
         return new ExpressionParser()
                 .handler(new SpaceParser())
+                .handler(new LocalDateTimeParser())
+                .handler(new PeriodParser())
                 // operations
-                .handler(new OpenOperationParser('(', ops++))
-                .handler(new CloseOperationParser(')', ops++))
-                .handler(new DivideOperationParser('/', ops++))
-                .handler(new MultiplyOperationParser('*', ops++))
-                .handler(new MinusOperationParser('-', ops++))
-                .handler(new PlusOperationParser('+', ops++))
+                .handler(new OpenOperatorParser('(', ops++))
+                .handler(new CloseOperatorParser(')', ops++))
+                .handler(new DivideOperatorParser('/', ops++))
+                .handler(new MultiplyOperatorParser('*', ops++))
+                .handler(new MinusOperatorParser('-', ops++))
+                .handler(new PlusOperatorParser('+', ops++))
                 // values
-                .handler(new InstantParser())
                 .handler(new NumericParser())
                 .handler(new StringParser());
     }
@@ -57,8 +59,8 @@ public class ExpressionParser {
     private boolean consume(ExpressionParserContext ctx) {
         for (ValueParser parser : parsers) {
             if (parser.parse(ctx)) {
-                if (parser instanceof OperationParser) {
-                    shrink(ctx, (OperationParser) parser);
+                if (parser instanceof OperatorParser) {
+                    shrink(ctx, (OperatorParser) parser);
                 }
                 return true;
             }
@@ -66,12 +68,12 @@ public class ExpressionParser {
         return false;
     }
 
-    private void shrink(ExpressionParserContext ctx, OperationParser parser) {
-        boolean isCloseClause = parser instanceof CloseOperationParser;
+    private void shrink(ExpressionParserContext ctx, OperatorParser parser) {
+        boolean isCloseClause = parser instanceof CloseOperatorParser;
         if (ctx.hasParserOps()) {
-            OperationParser lastParserOp = ctx.lastParserOp();
+            OperatorParser lastParserOp = ctx.lastParserOp();
             boolean prevHasHigherPriority = lastParserOp.priority() < parser.priority();
-            while ((ctx.hasParserOps() && prevHasHigherPriority || isCloseClause) && !(ctx.lastParserOp() instanceof OpenOperationParser)) {
+            while ((ctx.hasParserOps() && prevHasHigherPriority || isCloseClause) && !(ctx.lastParserOp() instanceof OpenOperatorParser)) {
                 ctx.lastParserOp().shrink(ctx);
             }
         }

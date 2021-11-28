@@ -1,14 +1,14 @@
 package org.bambrikii.expression.tiny.parser.ops;
 
 import org.bambrikii.expression.tiny.parser.ExpressionParserContext;
-import org.bambrikii.expression.tiny.parser.OperationParser;
+import org.bambrikii.expression.tiny.parser.OperatorParser;
 import org.bambrikii.expression.tiny.parser.utils.StringParseUtils;
 
-public abstract class BaseOperationParser implements OperationParser {
+public abstract class BaseOperatorParser implements OperatorParser {
     private final char ch;
     private final int priority;
 
-    BaseOperationParser(char ch, int priority) {
+    BaseOperatorParser(char ch, int priority) {
         this.ch = ch;
         this.priority = priority;
     }

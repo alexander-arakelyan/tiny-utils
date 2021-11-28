@@ -1,9 +1,9 @@
 package org.bambrikii.expression.tiny.algo;
 
 public class ExpressionAlgo<R> {
-    private Operation root;
+    private Operator root;
 
-    public ExpressionAlgo(Operation root) {
+    public ExpressionAlgo(Operator root) {
         this.root = root;
     }
 

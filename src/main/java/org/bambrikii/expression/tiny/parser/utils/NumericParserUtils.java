@@ -11,10 +11,12 @@ public class NumericParserUtils {
         int num = 0;
         int pos0 = pos;
         while (!ctx.isEol(pos0)) {
-            char ch = ctx.charAt(pos0++);
-            if (isNumeric(ch)) {
-                num = num * 10 + (ch - '0');
+            char ch = ctx.charAt(pos0);
+            if (!isNumeric(ch)) {
+                break;
             }
+            num = num * 10 + (ch - '0');
+            pos0++;
         }
         if (pos0 - pos != digits) {
             return null;

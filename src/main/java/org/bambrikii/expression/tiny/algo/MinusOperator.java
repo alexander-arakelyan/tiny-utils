@@ -1,10 +1,10 @@
 package org.bambrikii.expression.tiny.algo;
 
-public class MinusOperation implements Operation {
-    private final Operation arg1;
-    private final Operation arg2;
+public class MinusOperator implements Operator {
+    private final Operator arg1;
+    private final Operator arg2;
 
-    public MinusOperation(Operation arg1, Operation arg2) {
+    public MinusOperator(Operator arg1, Operator arg2) {
         this.arg1 = arg1;
         this.arg2 = arg2;
     }

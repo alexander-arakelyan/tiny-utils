@@ -2,8 +2,8 @@ package org.bambrikii.expression.tiny.parser.ops;
 
 import org.bambrikii.expression.tiny.parser.ExpressionParserContext;
 
-public class OpenOperationParser extends BaseOperationParser {
-    public OpenOperationParser(char ch, int priority) {
+public class OpenOperatorParser extends BaseOperatorParser {
+    public OpenOperatorParser(char ch, int priority) {
         super(ch, priority);
     }
 

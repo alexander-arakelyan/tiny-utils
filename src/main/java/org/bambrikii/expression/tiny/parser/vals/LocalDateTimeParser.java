@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 import static org.bambrikii.expression.tiny.parser.utils.InstantParserUtils.nextDelimiter;
 
-public class InstantParser implements ValueParser<Instant> {
+public class LocalDateTimeParser implements ValueParser<LocalDateTime> {
     @Override
     public boolean parse(ExpressionParserContext ctx) {
         int posDate = ctx.getPos();
@@ -49,6 +49,7 @@ public class InstantParser implements ValueParser<Instant> {
             ctx.setPos(posDate);
             return true;
         }
+        posTime++;
         Number hour = NumericParserUtils.nextDigits(ctx, posTime, 2);
         if (hour == null) {
             return false;
@@ -70,8 +71,8 @@ public class InstantParser implements ValueParser<Instant> {
             return false;
         }
         posTime += 2;
-        Instant instant = Instant.from(LocalDateTime.of(yearInt, monthInt, dayInt, hour.intValue(), minute.intValue(), second.intValue()));
-        ctx.pushVal(new ConstantValue(instant));
+        LocalDateTime val = LocalDateTime.of(yearInt, monthInt, dayInt, hour.intValue(), minute.intValue(), second.intValue());
+        ctx.pushVal(new ConstantValue(val));
         ctx.setPos(posTime);
         return true;
     }

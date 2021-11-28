@@ -1,9 +1,9 @@
 package org.bambrikii.expression.tiny.algo;
 
-public class ClauseOperation implements Operation {
-    private final Operation arg1;
+public class ClauseOperator implements Operator {
+    private final Operator arg1;
 
-    public ClauseOperation(Operation arg1) {
+    public ClauseOperator(Operator arg1) {
         this.arg1 = arg1;
     }
 

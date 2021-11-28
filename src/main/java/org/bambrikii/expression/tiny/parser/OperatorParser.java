@@ -1,6 +1,6 @@
 package org.bambrikii.expression.tiny.parser;
 
-public interface OperationParser extends ValueParser {
+public interface OperatorParser extends ValueParser {
     int priority();
 
     boolean parse(ExpressionParserContext ctx);
