@@ -9,7 +9,7 @@ public class LookupParserTest {
     @Test
     public void shouldEval() {
         Object val = ExpressionParser.buildDefault()
-                .consume("1 + $param1")
+                .compile("1 + $param1")
                 .eval(new ExpressionAlgoContext(o -> {
                     if ("param1".equals(o)) {
                         return 2;

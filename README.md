@@ -20,7 +20,7 @@ Lookup values are also supported. For example:
 
 ```
 ExpressionParser.buildDefault()
-        .consume("1 + $param1")
+        .compile("1 + $param1")
         .eval(new ExpressionAlgoContext(o -> {
             if ("param1".equals(o)) {
                 return 2;

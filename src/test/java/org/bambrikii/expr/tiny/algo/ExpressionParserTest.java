@@ -34,7 +34,7 @@ public class ExpressionParserTest {
     @ParameterizedTest
     @MethodSource("params")
     public void shouldEval(String expression, Object expected) {
-        Object val = ExpressionParser.buildDefault().consume(expression).eval(new ExpressionAlgoContext());
+        Object val = ExpressionParser.buildDefault().compile(expression).eval(new ExpressionAlgoContext());
         assertThat(val).isEqualTo(expected);
     }
 }

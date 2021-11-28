@@ -51,7 +51,7 @@ public class ExpressionParser {
                 .handler(new StringParser());
     }
 
-    public ExpressionAlgo consume(String expr) {
+    public ExpressionAlgo compile(String expr) {
         ExpressionParserContext ctx = new ExpressionParserContext(expr);
         while (consume(ctx)) {
         }
