@@ -10,9 +10,10 @@ public class PlusOperator implements Operator {
     private final Operator arg1;
     private final Operator arg2;
     private List<OperatorOverload> overloads = List.of(
-            new PlusNumberOverload(),
+            new PlusStringOverload(),
             new PlusInstantOverload(),
-            new PlusLocalDateTimeOverload()
+            new PlusLocalDateTimeOverload(),
+            new PlusNumberOverload()
     );
 
     public PlusOperator(Operator arg1, Operator arg2) {

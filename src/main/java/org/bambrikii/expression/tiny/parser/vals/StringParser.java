@@ -47,8 +47,8 @@ public class StringParser implements ValueParser<String> {
                 addChar(ctx, pos, chars);
                 pos++;
             }
-            if (isAlphaNumeric(ch)) {
-                return false;
+            if (!isAlphaNumeric(ch)) {
+                break;
             }
             addChar(ctx, pos, chars);
             pos++;
