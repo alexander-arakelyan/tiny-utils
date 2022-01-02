@@ -1,17 +1,16 @@
 package org.bambrikii.expr.tiny.algo.timeperiod;
 
 public class TimePeriodElement {
-    private final int num;
+    private final int val;
     private final TimePeriodType type;
 
-    public TimePeriodElement(int num, TimePeriodType type) {
-        this.num = num;
+    public TimePeriodElement(int val, TimePeriodType type) {
+        this.val = val;
         this.type = type;
     }
 
-
-    public int getNum() {
-        return num;
+    public int getVal() {
+        return val;
     }
 
     public TimePeriodType getType() {

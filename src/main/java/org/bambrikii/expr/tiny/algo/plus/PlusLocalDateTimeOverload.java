@@ -22,7 +22,7 @@ public class PlusLocalDateTimeOverload implements OperatorOverload {
     }
 
     private LocalDateTime evalDate(LocalDateTime date, TimePeriodElement period) {
-        int num = period.getNum();
+        int num = period.getVal();
         switch (period.getType()) {
             case YEAR:
                 return date.plusYears(num);

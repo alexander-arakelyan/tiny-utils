@@ -22,7 +22,7 @@ public class MinusLocalDateTimeOverload implements OperatorOverload {
     }
 
     private LocalDateTime evalDate(LocalDateTime date, TimePeriodElement period) {
-        int num = period.getNum();
+        int num = period.getVal();
         switch (period.getType()) {
             case YEAR:
                 return date.minusYears(num);

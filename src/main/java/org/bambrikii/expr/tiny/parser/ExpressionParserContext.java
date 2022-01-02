@@ -8,7 +8,6 @@ public class ExpressionParserContext {
     private final String expr;
     private int pos = 0;
     private final LinkedList<Operator> vals = new LinkedList<>();
-    private final LinkedList<Operator> ops = new LinkedList<>();
     private final LinkedList<OperatorParser> parserOps = new LinkedList<>();
 
     public ExpressionParserContext(String expr) {
@@ -39,16 +38,8 @@ public class ExpressionParserContext {
         vals.push(val);
     }
 
-    public void pushOp(Operator operator) {
-        this.ops.push(operator);
-    }
-
     public LinkedList<Operator> getVals() {
         return vals;
-    }
-
-    public LinkedList<Operator> getOps() {
-        return ops;
     }
 
     public Operator popVal() {

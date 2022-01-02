@@ -17,7 +17,7 @@ public class MinusInstantOverload implements OperatorOverload {
     public Object eval(Object... args) {
         Instant date = (Instant) args[0];
         for (TimePeriodElement period : (List<TimePeriodElement>) args[1]) {
-            int num = period.getNum();
+            int num = period.getVal();
             date = evalInstant(date, period, num);
         }
         return date;
