@@ -1,1 +1,4 @@
-rootProject.name = 'tiny-expr'
+rootProject.name = 'tiny-utils'
+
+include("tiny-expr")
+include("tiny-diff")

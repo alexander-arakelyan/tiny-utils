@@ -1,54 +1,6 @@
-apply from: "${rootDir}/gradle/java.gradle"
-apply from: "${rootDir}/gradle/libs.gradle"
-apply from: "${rootDir}/gradle/publish.gradle"
-
-dependencies {
-    testImplementation(libs.jupiter.api)
-    testImplementation(libs.jupiter.params)
-    testRuntimeOnly(libs.jupiter.engine)
-
-    testImplementation(libs.assertj.core)
-}
-
-test {
-    useJUnitPlatform()
-}
-
-uploadArchives {
+allprojects {
     repositories {
-        mavenDeployer {
-            pom.project {
-                name 'Tiny Expression Evaluator'
-                packaging 'jar'
-                description 'Expression evaluator library'
-                url 'https://github.com/bambrikii/tiny-expr'
-
-                scm {
-                    connection 'scm:git:https://github.com/bambrikii/tiny-expr.git'
-                    developerConnection 'scm:git:https://github.com/bambrikii/tiny-expr.git'
-                    url 'https://github.com/bambrikii/tiny-expr.git'
-                }
-
-                licenses {
-                    license {
-                        name 'GNU General Public License version 3'
-                        url 'https://opensource.org/licenses/GPL-3.0'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 'bambrikii'
-                        name 'Alexander Arakelyan'
-                        email 'bambrikii@gmail.com'
-                    }
-                    developer {
-                        id 'alexander.arakelyan'
-                        name 'Alexander Arakelyan'
-                        email 'alexander.arakelyan@gmail.com'
-                    }
-                }
-            }
-        }
+        mavenCentral()
+        jcenter()
     }
 }
