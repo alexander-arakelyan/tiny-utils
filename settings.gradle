@@ -2,3 +2,4 @@ rootProject.name = 'tiny-utils'
 
 include("tiny-expr")
 include("tiny-diff")
+include("tiny-algo")

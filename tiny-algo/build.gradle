@@ -8,7 +8,6 @@ dependencies {
     testImplementation(libs.jupiter.api)
     testImplementation(libs.jupiter.params)
     testRuntimeOnly(libs.jupiter.engine)
-
     testImplementation(libs.assertj.core)
 }
 
