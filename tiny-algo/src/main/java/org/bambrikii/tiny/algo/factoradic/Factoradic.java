@@ -2,7 +2,6 @@ package org.bambrikii.tiny.algo.factoradic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -43,22 +42,22 @@ public class Factoradic {
     }
 
     public static String toFactoradic(String original, int decimal) {
-        char[] alpha = original.toCharArray();
-        List<Character> chars = index(sort(alpha));
-        int i = 1;
-        int n = decimal;
-        var positions = new LinkedList<Integer>();
+        var alpha = original.toCharArray();
+        var chars = index(sort(alpha));
+        var i = 1;
+        var n = decimal;
+        var positions = new ArrayList<Integer>();
         while (n > 0) {
-            int pos = n % i;
-            positions.addFirst(pos);
+            var pos = n % i;
+            positions.add(pos);
             n /= i;
             i++;
         }
         var sb = new StringBuilder();
-        for (Integer pos : positions) {
-            char ch = chars.get(pos);
-            chars.remove(Character.valueOf(ch));
-            sb.append(ch);
+        for (int j = positions.size() - 1; j >= 0; j--) {
+            var ch = chars.get(positions.get(j));
+            chars.remove(ch);
+            sb.append(ch.charValue());
         }
         return sb.toString();
     }
