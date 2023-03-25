@@ -36,7 +36,7 @@ public class Factoradic {
 
     private static List<Character> index(char[] sorted) {
         var list = new ArrayList<Character>();
-        for (int i = sorted.length - 1; i >= 0; i--) {
+        for (int i = 0; i < sorted.length; i++) {
             list.add(sorted[i]);
         }
         return list;
