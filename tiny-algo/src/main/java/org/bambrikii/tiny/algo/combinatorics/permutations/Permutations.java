@@ -5,18 +5,18 @@ import java.util.function.Consumer;
 
 import static org.bambrikii.tiny.algo.utils.ArrayUtils.swap;
 
-public class Permutations {
-    private final Consumer<int[]>[] consumers;
+public class Permutations<T> {
+    private final Consumer<T[]>[] consumers;
 
-    public Permutations(Consumer<int[]>... consumers) {
+    public Permutations(Consumer<T[]>... consumers) {
         this.consumers = consumers;
     }
 
-    public void permute(int[] arr) {
+    public void permute(T[] arr) {
         permute(arr, 0);
     }
 
-    private void permute(int[] arr, int k) {
+    private void permute(T[] arr, int k) {
         if (k == arr.length) {
             Arrays
                     .stream(consumers)
