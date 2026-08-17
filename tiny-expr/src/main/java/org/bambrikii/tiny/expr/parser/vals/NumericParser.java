@@ -41,7 +41,7 @@ public class NumericParser implements ValueParser<Number> {
             fraction = fraction + (ch - '0') / div;
             div *= 10;
         }
-        if (posFraction == pos + 1) {
+        if (posFraction == posWhole + 1) {
             if (posWhole == pos) {
                 return false;
             }
@@ -49,7 +49,7 @@ public class NumericParser implements ValueParser<Number> {
         } else {
             ctx.pushVal(new ConstantValue(Double.valueOf(whole + fraction)));
         }
-        ctx.setPos(posWhole);
+        ctx.setPos(posFraction);
         return true;
     }
 }
